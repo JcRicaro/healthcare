@@ -1,18 +1,34 @@
 	<div class="ui grid">
 		<div class="sixteen wide column">
 			<div class="ui blue segment">
-				<div class="ui blue ribbon label">Patients information</div>
-				<br/>
-				<h4 class="ui header"><?php echo date('M d, Y'); ?></h4>
+				<div class="ui blue ribbon label">Patient's information</div>
 				
-				<div class="ui list">
-					<div class="item">
-						<div class="header">Name</div>
-						<?php echo $patient->firstname; ?> <?php echo $patient->middlename; ?> <?php echo $patient->lastname; ?>
+				<div class="ui grid">
+					<div class="ten wide column">
+					<br>
+						<div class="ui list">
+							<div class="item">
+								<div class="header">Name</div>
+								<?php echo $patient->firstname; ?> <?php echo $patient->middlename; ?> <?php echo $patient->lastname; ?>
+							</div>
+							<div class="item">
+								<div class="header">Gender</div>
+								<?php echo $patient->gender; ?>
+							</div>
+						</div>
 					</div>
-					<div class="item">
-						<div class="header">Gender</div>
-						<?php echo $patient->gender; ?>
+					<div class="six wide column">
+					<h4 class="ui header"><?php echo date('M d, Y'); ?></h4>
+					<div class="ui list">
+						<div class="item">
+							<div class="header">Height</div>
+							<?php echo $patient->height; ?>
+						</div>
+						<div class="item">
+							<div class="header">Weight</div>
+							<?php echo $patient->weight; ?>
+						</div>
+					</div>
 					</div>
 				</div>
 			</div>
@@ -37,6 +53,9 @@
 				<div class="field">
 					<textarea placeholder="Examination" name="examination"></textarea>
 				</div>
+
+				<label>Upload a file</label>
+				<input type="file">
 			</div>
 		</div>
 	</div>

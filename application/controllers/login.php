@@ -13,6 +13,20 @@ class Login extends CI_Controller {
 		$this->load->view('login/login');
 	}
 
+	function register() {
+		$o = new User();
+		$data['doctors'] = $o->where('usertype_id',1)->get();
+		$this->load->view('login/register', $data);
+	}
+
+	function register_post() {
+		$o = new Patient();
+
+		$o->firstname = $this->input->post('firstname');
+		$o->save();
+	}
+
+
 	function validate() {
 		$o = new User();
 

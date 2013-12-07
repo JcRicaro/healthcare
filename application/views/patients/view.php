@@ -44,7 +44,7 @@
 			<div class="field">
 				<label>Gender</label>
 				<div class="ui selection dropdown">
-  					<input type="hidden" name="gender">
+  					<input type="hidden" name="gender" value="<?php echo $patient->gender; ?>">
 					<div class="default text">Gender</div>
   					<i class="dropdown icon"></i>
   					<div class="menu">
@@ -59,6 +59,23 @@
 			<label>Address</label>
 			<textarea placeholder="Address" name="address"><?php echo $patient->address; ?></textarea>
 		</div>
+		
+
+		<div class="three fields">
+			<div class="field">
+				<label>Weight</label>
+				<input type="text" placeholder="Weight" name="weight" value="<?php echo $patient->weight; ?>">
+			</div>
+			<div class="field">
+				<label>Height</label>
+				<input type="text" placeholder="Height" name="height" value="<?php echo $patient->height; ?>">
+			</div>
+			<div class="field">
+				<label>Blood Type</label>
+				<input type="text" placeholder="Blood Type(Optional)" name="blood_type" value="<?php echo $patient->blood_type; ?>">
+			</div>
+		</div>
+
 		</form>
 		<a href="#" class="ui blue button" id="save">Save</a>
 	</div>
@@ -74,7 +91,7 @@
 					Doctor
 				</th>
 				<th>
-					Date
+					Date/Time
 				</th>
 				<th>
 				</th>
@@ -84,7 +101,7 @@
 		<?php foreach($patient->consultation->get() as $consultation): ?>
 			<tr>
 				<td><?php echo $consultation->user->get()->lastname; ?>, <?php echo $consultation->user->get()->firstname; ?></td>
-				<td><?php echo date('M d, Y', strtotime($consultation->created_at)); ?></td>
+				<td><?php echo date('M d, Y / h:i:s a', strtotime($consultation->created_at)); ?></td>
 				<td><i class="edit link icon" data-id="<?php echo $consultation->id; ?>"></i></td>
 			</tr>
 		<?php endforeach; ?>
@@ -93,8 +110,26 @@
 	<?php endif; ?>
 </div>
 
+
+<div class="ui small modal">
+	<div class="header">
+	Patient's Profile
+	</div>
+	<div class="content">
+	Data has been saved! <i class="info icon"></i>
+	</div>
+
+	<div class="actions">
+		<div class="button">
+			<a href="#" class="ui button">Close</a>
+		</div>
+	</div>
+
+</div>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$('.ui.dropdown').dropdown();
+
 		var rules = {
 			firstname : {
 				identifier : 'firstname',
@@ -160,6 +195,7 @@
 				$.post("<?php echo site_url('patients/save_post/'. $patient->id); ?>", $("#patient").serialize(), function(data) {
 					if(data.status == true) {
 						//data saved modal
+						$('.ui.small.modal').modal('show');
 					}
 					else {
 						//data  not saved modal
@@ -172,6 +208,7 @@
 
 		$("#save").click(function() {
 			$('.ui.form').form('validate form');
+			return false;
 		});
 
 		$(".link").click(function() {

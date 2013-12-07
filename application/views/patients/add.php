@@ -1,25 +1,28 @@
 
 <div class="ui breadcrumbs">
-	<a href="<?php echo site_url('patients'); ?>">Patients</a> / Add Patient
+	<a href="<?php echo site_url('patients'); ?>">Patients</a> /Add Patient
+	
 </div>
 
 <div class="ui blue segment">
+	<h3 class="ui blue label ribbon">Patient's Info</h3>
+	<br><br/>
 	<div class="ui form">
 		<form class="registration_form">
 		<div class="three fields">		
 			<div class="field">
-				<label>First Name</label>
+				<label><strong>First Name</strong></label>
 				<input type="text" name="firstname" placeholder="First Name">
 			</div>
 
 			<div class="field">
-				<label>Last Name</label>
+				<label><strong>Last Name</strong></label>
 				<input type="text" name="lastname" placeholder="Last Name">
 			</div>
 	
 			<div class="field">
-				<label>Middle Initial</label>
-				<input type="text" name="middleinitial" placeholder="Middle Initial">
+				<label><strong>Middle Initial</strong></label>
+				<input type="text" name="middlename" placeholder="Middle Initial">
 			</div>
 
 		</div>
@@ -27,71 +30,77 @@
 		<div class="three fields">
 
 			<div class="field">
-				<label>Age</label>
+				<label><strong>Age</strong></label>
 				<input type="text" name="age" placeholder="Age">
 			</div>
 
 			<div class="field">
-				<label>Nationality</label>
+				<label><strong>Nationality</strong></label>
 				<input type="text" name="nationality" placeholder="Nationality">
 			</div>
 
 			<div class="field">
-				<label>Birthday</label>
-				<input type="text" name="birthday" placeholder="Birthday">
+				<label><strong>Birthdate</strong></label>
+				<input type="text" name="birthday" placeholder="Birthdate">
 			</div>
 
 		</div>
 
-		<div class="two	fields">
 			<div class="field">
-				<label>Address</label>
+				<label><strong>Address</strong></label>
 				<textarea name="address" placeholder="Address"></textarea>
 			</div>
-			<div class="field">
+	
 
-		<div class="two fields">
+		<div class="four fields">
 			<div class="field">
-				<label>Civil Status</label>
-				<div class="grouped inline fields">
+				<label><strong>Weight</strong></label>
+				<input type="text" name="weight" placeholder="Weight">
+			</div>
 
-    	<div class="field">
+			<div class="field">
+				<label><strong>Height</strong></label>
+				<input type="text" name="height" placeholder="Height">
+			</div>
+
+			<div class="field">
+				<label><strong>Civil Status</strong></label>
+			<div class="grouped inline fields">
+
+	    	<div class="field">
       		<div class="ui radio checkbox">
         		<input type="radio" name="status" checked="checked">
-       			 <label>Single</label>
-      
-      	</div>
-    	</div>
+       			<label>Single</label>
+       		</div>
+    		</div>
 
-    	<div class="field">
+    		<div class="field">
       		<div class="ui radio checkbox">
        			 <input type="radio" name="status">
         		<label>Married</label>
-     
-      </div>
-   	 </div>
+        	</div>
+       	 	</div>
 
-   	     <div class="field">
-     	     <div class="ui radio checkbox">
+			<div class="field">
+     	    <div class="ui radio checkbox">
         		<input type="radio" name="status">
         		<label>Widowed</label>
+        	</div>
+    		</div>
+			</div>
+		</div>
 
-      </div>
-    </div>
-
-    </div>
-	</div>
 		<div class="field">
-		<label>Gender</label>
-		<div class="ui selection dropdown">
+				<label><strong>Gender</strong></label>
+					<div class="ui selection dropdown">
 		  					<input type="hidden" name="gender">
-							<div class="default text">Gender</div>
+						<div class="default text">Gender</div>
 		  					<i class="dropdown icon"></i>
-		  					<div class="menu">
-		    					<div class="item" data-value="male">Male</div>
-		    					<div class="item" data-value="female">Female</div>
-		  					</div>
-						</div>
+		  				<div class="menu">
+		    				<div class="item" data-value="male">Male</div>
+		    				<div class="item" data-value="female">Female</div>
+		  				</div>
+					</div>
 					</div>
 				</div>
 			</div>
@@ -102,6 +111,21 @@
 	</div>
 </div>
 
+<div class="ui small modal">
+	<div class="header">
+	Patient's Profile
+	</div>
+	<div class="content">
+	Data has been saved! <i class="info icon"></i>
+	</div>
+
+	<div class="actions">
+		<div class="button">
+			<a href="#" class="ui button">Close</a>
+		</div>
+	</div>
+
+</div>
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -172,7 +196,7 @@
 			onSuccess : function() {
 				//post data
 				$.post("<?php echo site_url('patients/add_post'); ?>", $(".registration_form").serialize(), function() {
-					alert('saved');
+					window.location = "<?php echo site_url('patients'); ?>";
 				}, 'json');
 			}
 		};

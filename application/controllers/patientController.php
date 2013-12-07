@@ -49,7 +49,12 @@ class PatientController extends CI_Controller {
 			$o->address = $this->input->post('address');
 			$o->civilstatus = $this->input->post('status');
 			$o->gender = $this->input->post('gender');
+			$o->weight = $this->input->post('weight');
+			$o->height = $this->input->post('height');
+			$o->blood_type = $this->input->post('blood_type');
+			$o->user_id = $this->session->userdata('user_id');
 
+			
 			$o->save();
 		}
 	}
@@ -67,6 +72,10 @@ class PatientController extends CI_Controller {
 		$o->address = $this->input->post('address');
 		$o->civilstatus = $this->input->post('status');
 		$o->gender = $this->input->post('gender');
+		$o->weight = $this->input->post('weight');
+		$o->height = $this->input->post('height');
+		$o->blood_type = $this->input->post('blood_type');
+		$o->user_id = $this->session->userdata('user_id');
 
 
 		if($o->save()) {
@@ -107,10 +116,11 @@ class PatientController extends CI_Controller {
 
 	function consult_post() {
 		$o = new Consultation();
+		$o->date = date("Y-m-d H:i:s");
 		$o->patient_id = 			$this->input->post('patient_id');
 		$o->observation = 			$this->input->post('observation');
 		$o->examination =  			$this->input->post('examination');
-		$o->user_id = 			$this->session->userdata('id');
+		$o->user_id =	 			$this->session->userdata('user_id');
 		
 		if($o->save()) {
 			$response = array('status' => true);
@@ -121,11 +131,11 @@ class PatientController extends CI_Controller {
 
 		echo json_encode($response);
 
-	}
+	}	
 
 	function delete($id) {
 		$o = new Patient();
-		$o->where('id', $id)->delete();
+		$o->where('id', $id)->get()->delete();
 
 		$this->session->set_flashdata(array(
 			'info' => 'Patient Deleted'

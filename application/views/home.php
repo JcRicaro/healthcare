@@ -5,7 +5,7 @@
 		</div>
 
 		<div class="ui segment blue">
-		qwe
+		26
 		</div>
 	</div>
 

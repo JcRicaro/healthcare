@@ -6,9 +6,9 @@
 }
 
 body {
-    /*background-color: #bbcad7  ;*/
-    background-size: 100% 100%;
-    /*min-height: 700px;*/
+    background-color: #bbcad7;
+    background-size: 100%;
+    min-height: 700px;
     font-family:'Open Sans';
 }
 

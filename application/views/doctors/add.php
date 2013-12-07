@@ -1,51 +1,53 @@
 <div class="ui form">
 <form id="doctorform">
 	<div class="ui segment">
+		<h3 class="ui blue label ribbon">Doctor's Profile</h3>
+		<br><br/>
 		<div class="three fields">
 			<div class="field">
-				<label>First Name</label>
+				<label><strong>First Name</strong></label>
 				<input type="text" name="firstname" placeholder="First Name">
 			</div>
 
 			<div class="field">
-				<label>Middle Name</label>
+				<label><strong>Middle Name</strong></label>
 				<input type="text" name="middlename" placeholder="Middle Name">
 			</div>
 
 			<div class="field">
-				<label>Last Name</label>
+				<label><strong>Last Name</strong></label>
 				<input type="text" name="lastname" placeholder="Last Name">
 			</div>
 		</div>
 
 		<div class="three fields">
 			<div class="field">
-				<label>Age</label>
+				<label><strong>Age</strong></label>
 				<input type="text" name="age" placeholder="Age">
 			</div>
 
 			<div class="field">
-				 <label>Nationality</label>
+				 <label><strong>Nationality</strong></label>
 				 <input type="text" name="nationality" placeholder="Nationality">
 			</div>
 
 			<div class="field">
-			 	<label>Birthdate</label>
+			 	<label><strong>Birthdate</strong></label>
 			 	<input type="text" name="birthdate" placeholder="Birthdate">
 			</div>
 		</div>
 
 		<div class="three fields">
 			<div class="field">
-				<label>Phone Number</label>
+				<label><strong>Phone Number</strong></label>
 				<input type="text" name="phone" placeholder="Phone Number">
 			</div>
 			<div class="field">
-				<label>Email Address</label>
+				<label><strong>Email Address</strong></label>
 				<input type="text" name="email" placeholder="Email Address">
 			</div>
 			<div class="field">
-				<label>Gender</label>
+				<label><strong>Gender</strong></label>
 				<div class="ui selection dropdown">
 						<input type="hidden" name="gender">
 					<div class="default text">Gender</div>
@@ -58,9 +60,15 @@
 			</div>
 		</div>
 
+		<div class="two fields">
 		<div class="field">
-			<label>Specialization</label>
-			<input type="text" placeholder="Specialization">
+			<label><strong>Specialization</strong></label>
+			<input type="text" name="specialization"placeholder="Specialization">
+		</div>
+		<div class="field">
+			<label><strong>Consultation Hours</strong></label>
+			<input type="text" name="specialization" placeholder="Consultation Hours">
+		</div>
 		</div>
 	</div>
 	
@@ -69,23 +77,24 @@
 		<div class="ui blue ribbon label">Login Details</div>
 		<br/><br/>
 		<div class="field">
-			<label>Username</label>
+			<label><strong>Username</strong></label>
 			<input type="text" name="username" placeholder="Username">
 		</div>
 		<div class="two fields">
 			<div class="field">
-				<label>Password</label>
+				<label><strong>Password</strong></label>
 				<input type="password" name="password" placeholder="Password">
 			</div>
 			<div class="field">
-				<label>Retype Password</label>
+				<label><strong>Re-type Password</strong></label>
 				<input type="password" name="retype_password" placeholder="Retype password">
 			</div>
 		</div>
 	</div>
 
 
-	<a class="ui blue button" href="#" id="add">Add doctor</a>
+			<a class="ui blue button" href="#" id="add">Add doctor</a>
+
 	</form>
 </div>
 
