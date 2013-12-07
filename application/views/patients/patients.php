@@ -5,9 +5,10 @@
 	<table class="ui basic table">
 		<thead>
 			<tr>
+			<br>
 				<th>Name</th>
 				<th>Address</th>
-				<th>Last Accessed by</th>
+				<th>Physician</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,10 +31,9 @@
 
 <div class="ui small modal">
 	<div class="header">
-		Confirm delete.
 	</div>
 	<div class="content">
-		Are ye sure ye want to delete this patient?
+		Are you sure you want to delete this patient?
 	</div>
 	<div class="actions">
 		<a href="#" id="mydelete" class="ui button">Delete</a>

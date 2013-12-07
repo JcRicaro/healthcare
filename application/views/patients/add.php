@@ -1,7 +1,7 @@
 
 <div class="ui breadcrumbs">
-	<a href="<?php echo site_url('patients'); ?>">Patients</a> /Add Patient
 	
+	<a href="<?php echo site_url('patients'); ?>" class="ui blue button">Patients</a>
 </div>
 
 <div class="ui blue segment">
@@ -48,7 +48,7 @@
 
 			<div class="field">
 				<label><strong>Address</strong></label>
-				<textarea name="address" placeholder="Address"></textarea>
+				<input type="text" placeholder="Address" name="address">
 			</div>
 	
 
@@ -196,7 +196,14 @@
 			onSuccess : function() {
 				//post data
 				$.post("<?php echo site_url('patients/add_post'); ?>", $(".registration_form").serialize(), function() {
-					window.location = "<?php echo site_url('patients'); ?>";
+				if(data.status == true) {
+					//data saved
+					$('.ui.small.modal').modal('show');
+				}
+
+				else {
+					//data not saved modal
+				}
 				}, 'json');
 			}
 		};

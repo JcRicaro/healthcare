@@ -37,6 +37,11 @@
 			</div>
 		</div>
 
+			<div class="field">
+				<label><strong>Address</strong></label>
+				<input type="text" name="address" placeholder="Address">
+			</div>
+
 		<div class="three fields">
 			<div class="field">
 				<label><strong>Phone Number</strong></label>
@@ -72,7 +77,6 @@
 		</div>
 	</div>
 	
-
 	<div class="ui segment">
 		<div class="ui blue ribbon label">Login Details</div>
 		<br/><br/>

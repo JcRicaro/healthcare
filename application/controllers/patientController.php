@@ -136,9 +136,9 @@ class PatientController extends CI_Controller {
 	function delete($id) {
 		$o = new Patient();
 		$o->where('id', $id)->get()->delete();
-
+		
 		$this->session->set_flashdata(array(
-			'info' => 'Patient Deleted'
+			'info' => 'Patient Deleted!'
 			));
 
 		redirect('patients');
