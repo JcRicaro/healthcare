@@ -2,10 +2,13 @@
 <html>
 <head>
 	<title></title>
+
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/ui-lightness/jquery-ui-1.10.3.custom.min.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/semantic.css'); ?>">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/css/style.css'); ?>">
 	<script type="text/javascript" src="<?php echo base_url('assets/javascript/jquery-1.10.2.min.js'); ?>"></script>
-	<script type="text/javascript" src="<?php echo base_url('assets/js/semantic.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/javascript/jquery-ui-1.10.3.custom.min.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/javascript/semantic.js'); ?>"></script>
 </head>
 <body>
 
@@ -46,7 +49,7 @@
 
 			<div class="field">
 				<label><strong>Birthdate</strong></label>
-				<input type="text" name="birthday" placeholder="Birthdate">
+				<input type="text" name="birthday" placeholder="Birthdate" id="datepicker">
 			</div>
 
 		</div>
@@ -122,12 +125,12 @@
 		Patient's Profile
 		</div>
 		<div class="content">
-		Data has been saved! <i class="info icon"></i>
+		The patient’s information is now registered! Please proceed to be counter for doctor assignment. <i class="info icon"></i>
 		</div>
 
 		<div class="actions">
 			<div class="button">
-				<a href="#" class="ui button">Close</a>
+				<a href="#" class="ui button" id="reload">Close</a>
 			</div>
 		</div>
 
@@ -136,6 +139,9 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		$("#reload").click(function() {
+			location.reload();
+		});
 		$('.ui.dropdown').dropdown();
 
 		$('.ui.checkbox').checkbox();
@@ -202,7 +208,7 @@
 			on : 'blur', 
 			onSuccess : function() {
 				//post data
-				$.post("<?php echo site_url('login/register'); ?>", $("#register").serialize(), function() {
+				$.post("<?php echo site_url('login/register_post'); ?>", $("#register").serialize(), function(data) {
 				if(data.status == true) {
 					//data saved
 					$('.ui.small.modal').modal('show');
@@ -221,6 +227,8 @@
 			$("#register").form('validate form');
 			return false;
 		});
+
+		$("#datepicker").datepicker();
 	});
 </script>
 

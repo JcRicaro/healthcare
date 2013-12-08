@@ -45,7 +45,7 @@ class PatientController extends CI_Controller {
 			$o->middlename = $this->input->post('middlename');
 			$o->age = $this->input->post('age');
 			$o->nationality = $this->input->post('nationality');
-			$o->birthday = $this->input->post('birthday');
+			$o->birthday = date("Y-m-d", strtotime($this->input->post('birthday')));
 			$o->address = $this->input->post('address');
 			$o->civilstatus = $this->input->post('status');
 			$o->gender = $this->input->post('gender');
@@ -55,7 +55,8 @@ class PatientController extends CI_Controller {
 			$o->user_id = $this->session->userdata('user_id');
 
 			
-			$o->save();
+			if($o->save())
+				echo json_encode(array('status' => true));
 		}
 	}
 
@@ -114,16 +115,38 @@ class PatientController extends CI_Controller {
 		$this->load->view('footer');
 	}
 
-	function consult_post() {
+	function consult_post($id) {
+
 		$o = new Consultation();
 		$o->date = date("Y-m-d H:i:s");
-		$o->patient_id = 			$this->input->post('patient_id');
+		$o->patient_id = 			$id;
 		$o->observation = 			$this->input->post('observation');
 		$o->examination =  			$this->input->post('examination');
+		$o->prescription =			$this->input->post('prescription');
 		$o->user_id =	 			$this->session->userdata('user_id');
 		
 		if($o->save()) {
-			$response = array('status' => true);
+			$config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'pdf';
+			$config['encrypt_name'] = true;
+
+			$this->load->library('upload', $config);
+
+			if($this->upload->do_upload()) {
+				$upload = $this->upload->data();
+
+				$f = new File();
+				$f->consultation_id = $o->id;
+				$f->filename = $upload['orig_name'];
+				$f->storagename = $upload['file_name'];
+
+				$f->save();
+
+				redirect('patients/view/'.$id);
+			}
+			else {
+
+			}
 		}
 		else {
 			$response = array('status' => false);

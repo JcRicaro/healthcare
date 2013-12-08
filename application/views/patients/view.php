@@ -75,9 +75,9 @@
 				<input type="text" placeholder="Blood Type(Optional)" name="blood_type" value="<?php echo $patient->blood_type; ?>">
 			</div>
 		</div>
-
-		</form>
 		<a href="#" class="ui blue button" id="save">Save</a>
+		</form>
+		
 	</div>
 
 
@@ -94,6 +94,9 @@
 					Date/Time
 				</th>
 				<th>
+					Files
+				</th>
+				<th>
 				</th>
 			</tr>
 		</thead>
@@ -102,6 +105,11 @@
 			<tr>
 				<td><?php echo $consultation->user->get()->lastname; ?>, <?php echo $consultation->user->get()->firstname; ?></td>
 				<td><?php echo date('M d, Y / h:i:s a', strtotime($consultation->created_at)); ?></td>
+				<td>
+					<?php foreach($consultation->file->get() as $file): ?>
+					<?php echo $file->filename; ?> ( <a href="<?php echo base_url('uploads/'.$file->storagename); ?>">download</a> )
+					<?php endforeach; ?>
+				</td>
 				<td><i class="edit link icon" data-id="<?php echo $consultation->id; ?>"></i></td>
 			</tr>
 		<?php endforeach; ?>

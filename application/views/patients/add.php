@@ -41,7 +41,7 @@
 
 			<div class="field">
 				<label><strong>Birthdate</strong></label>
-				<input type="text" name="birthday" placeholder="Birthdate">
+				<input type="text" name="birthday" placeholder="Birthdate" id="datepicker">
 			</div>
 
 		</div>
@@ -195,7 +195,7 @@
 			on : 'blur',
 			onSuccess : function() {
 				//post data
-				$.post("<?php echo site_url('patients/add_post'); ?>", $(".registration_form").serialize(), function() {
+				$.post("<?php echo site_url('patients/add_post'); ?>", $(".registration_form").serialize(), function(data) {
 				if(data.status == true) {
 					//data saved
 					$('.ui.small.modal').modal('show');
@@ -214,5 +214,7 @@
 			$('.ui.form').form('validate form');
 			return false;
 		});
+
+		$("#datepicker").datepicker();
 	});
 </script>

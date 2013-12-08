@@ -87,7 +87,7 @@
 			<div class="three fields">
 				<div class="field">
 					<label><strong>Current Password</strong></label>
-					<input type="text" name="password" placeholder="Current Password">
+					<input type="text" name="oldpassword" placeholder="Current Password">
 				</div>
 				<div class="field">
 					<label><strong>New Password</strong></label>
@@ -95,7 +95,7 @@
 				</div>
 				<div class="field">
 					<label><strong>Re-type New Password</strong></label>
-					<input type="password" name="password" placeholder="Re-type New Password">
+					<input type="password" name="repassword" placeholder="Re-type New Password">
 				</div>
 			</div>
 		</div>
@@ -144,15 +144,21 @@
 			inline : true,
 			on : 'blur',
 			onSuccess : function() {
-				$(".ui.small.modal").modal('show');
+				$.post("<?php echo site_url('doctor/view_post/'.$doctor->id); ?>", $("#doctor").serialize(), function(data) {
+					if(data.status == true) {
+						$(".ui.small.modal").modal('show');	
+					}
+					
+				}, 'json');
+
 			}
 		};
 
 
-		$("#doctor").form(rules, settings);
+		$(".ui.form").form(rules, settings);
 
 		$("#save").click(function() {
-			$("#doctor").form('form validate');
+			$(".ui.form").form('validate form');
 			return false;
 		});
 	});

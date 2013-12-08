@@ -35,7 +35,7 @@
 		</div>
 	</div>
 	<br/>
-	<form id="consultation">
+	<form id="consultation" method="post" enctype="multipart/form-data" action="<?php echo site_url('patients/consult_post/'.$patient->id); ?>">
 	<div class="ui grid">
 		<div class="eight wide column">
 			<div class="ui form blue segment">
@@ -55,7 +55,7 @@
 				</div>
 
 				<label>Upload a file</label>
-				<input type="file">
+				<input type="file" name="userfile">
 			</div>
 		</div>
 	</div>
@@ -71,18 +71,19 @@
 			</div>
 		</div>
 	</div>
-
+	<!-- <a class="ui blue button" id="save">Save</a> -->
+	<input type="submit" class="ui blue button" value="Save" />
 	</form>
 	<br/>
-	<a class="ui blue button" id="save">Save</a>
+	
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$("#save").click(function() {
+			/*$("#save").click(function() {
 				$.post("<?php echo site_url('patient/consult_post/'. $patient->id); ?>", $("#consultation").serialize() + "&patient_id=<?php echo $patient->id; ?>", function() {
 
 				}, 'json');
-			});
+			});*/
 			
 		});
 	</script>

@@ -24,17 +24,18 @@ class Login extends CI_Controller {
 
 		$o->firstname = $this->input->post('firstname');
 		$o->lastname = $this->input->post('lastname');
-		$o->middename = $this->input->post('middlename');
+		$o->middlename = $this->input->post('middlename');
 		$o->age = $this->input->post('age');
 		$o->nationality= $this->input->post('nationality');
-		$o->birthdate= $this->input->post('birthdate');
+		$o->birthdate= date("Y-m-d", strtotime($this->input->post('birthdate')));
 		$o->address= $this->input->post('address');
 		$o->weight= $this->input->post('weight');
 		$o->height= $this->input->post('height');
 		$o->status= $this->input->post('status');
 		$o->gender= $this->input->post('gender');
 		
-		$o->save();
+		if($o->save())
+			echo json_encode(array('status' => true));
 	}
 
 

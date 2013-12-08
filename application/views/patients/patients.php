@@ -2,13 +2,13 @@
 <div class="ui segment">
 <a href="<?php echo site_url('patients/add'); ?>" class="ui blue button"><i class="add icon"></i>Register</a>
 <?php if($patients): ?>
-	<table class="ui basic table">
+	<table class="ui basic table" id="table">
 		<thead>
 			<tr>
-			<br>
 				<th>Name</th>
 				<th>Address</th>
 				<th>Physician</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -42,6 +42,15 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		$.fn.dataTableExt.oStdClasses.sFilter = "ui form";
+
+		$("#table").dataTable({
+			'sFilter' : "field",
+			'bLengthChange' : false,
+			'bPaginate' : false,
+			'bServerSide' : false
+		});
+
 		$(".edit").click(function() {
 			window.location = "<?php echo site_url('patient/view'); ?>/" + $(this).attr('data-id');
 			return false;

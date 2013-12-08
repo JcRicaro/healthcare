@@ -104,6 +104,18 @@
 	</form>
 </div>
 
+
+<div class="ui small modal">
+	<div class="header">
+		Doctor's Profile
+	</div>
+	<div class="content">
+		Doctor added! <i class="info icon"></i>
+	</div>
+	<div class="actions">
+	</div>
+</div>
+
 <script type="text/javascript">	
 	$(document).ready(function() {
 		$('.ui.dropdown').dropdown();
@@ -134,8 +146,10 @@
 		 	inline : true,
 		 	onSuccess : function() {
 		 		//post
-		 		$.post("<?php echo site_url('doctor/add_post'); ?>", $("#doctorform").serialize(), function() {
-		 			alert('test');
+		 		$.post("<?php echo site_url('doctor/add_post'); ?>", $("#doctorform").serialize(), function(data) {
+		 			if(data.status == true) {
+		 				$(".ui.small.modal").modal('show');	
+		 			}
 		 		}, 'json');
 		 	}
 		 };
