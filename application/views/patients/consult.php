@@ -72,6 +72,7 @@
 		</div>
 	</div>
 	<!-- <a class="ui blue button" id="save">Save</a> -->
+	<br/>
 	<input type="submit" class="ui blue button" value="Save" />
 	</form>
 	<br/>

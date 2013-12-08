@@ -101,7 +101,7 @@
 			</tr>
 		</thead>
 		<tbody>
-		<?php foreach($patient->consultation->get() as $consultation): ?><br>
+		<?php foreach($patient->consultation->get() as $consultation): ?>
 			<tr>
 				<td><?php echo $consultation->user->get()->lastname; ?>, <?php echo $consultation->user->get()->firstname; ?></td>
 				<td><?php echo date('M d, Y / h:i:s a', strtotime($consultation->created_at)); ?></td>
