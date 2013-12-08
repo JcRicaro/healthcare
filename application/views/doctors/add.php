@@ -51,16 +51,17 @@
 				<label><strong>Email Address</strong></label>
 				<input type="text" name="email" placeholder="Email Address">
 			</div>
+
 			<div class="field">
 				<label><strong>Gender</strong></label>
 				<div class="ui selection dropdown">
 						<input type="hidden" name="gender">
 					<div class="default text">Gender</div>
-						<i class="dropdown icon"></i>
+							<i class="dropdown icon"></i>
 						<div class="menu">
-						<div class="item" data-value="male">Male</div>
+							<div class="item" data-value="male">Male</div>
 						<div class="item" data-value="female">Female</div>
-						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -76,6 +77,7 @@
 		</div>
 		</div>
 	</div>
+	</form>
 	
 	<div class="ui segment">
 		<div class="ui blue ribbon label">Login Details</div>
@@ -104,6 +106,8 @@
 
 <script type="text/javascript">	
 	$(document).ready(function() {
+		$('.ui.dropdown').dropdown();
+
 		 var rules = {
 		 	firstname : {
 		 		identifier : 'firstname',

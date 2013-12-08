@@ -53,7 +53,7 @@
 
 			<div class="field">
 				<label><strong>Address</strong></label>
-				<textarea name="address" placeholder="Address"></textarea>
+				<input type="text" placeholder="Address"></textarea>
 			</div>
 	
 

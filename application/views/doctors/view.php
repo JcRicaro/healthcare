@@ -117,7 +117,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		$('.ui.dropdown'.dropdown();
+		$('.ui.dropdown').dropdown();
 
 		var rules = {
 			firstname : {
